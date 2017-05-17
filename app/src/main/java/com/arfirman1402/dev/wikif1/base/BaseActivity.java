@@ -1,6 +1,7 @@
 package com.arfirman1402.dev.wikif1.base;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -24,7 +25,12 @@ public class BaseActivity<T> extends AppCompatActivity {
     }
 
     protected void openNewActivity(Class dest, boolean isFinish) {
+        openNewActivity(dest, new Bundle(), isFinish);
+    }
+
+    protected void openNewActivity(Class dest, Bundle extras, boolean isFinish) {
         Intent i = new Intent(this, dest);
+        i.putExtras(extras);
         startActivity(i);
         if (isFinish) finish();
     }

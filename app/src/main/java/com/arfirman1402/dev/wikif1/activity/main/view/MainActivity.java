@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.activity.main.presenter.IMainP;
@@ -14,6 +15,7 @@ import com.arfirman1402.dev.wikif1.activity.main.view.holder.VHSeason;
 import com.arfirman1402.dev.wikif1.activity.season.view.SeasonActivity;
 import com.arfirman1402.dev.wikif1.base.BaseActivity;
 import com.arfirman1402.dev.wikif1.base.BaseAdapter;
+import com.arfirman1402.dev.wikif1.base.BaseConstant;
 import com.arfirman1402.dev.wikif1.util.model.Season;
 
 import java.util.ArrayList;
@@ -52,12 +54,12 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
 
         seasonAdapter = new BaseAdapter<Season, VHSeason>(R.layout.adapter_main_season_list, VHSeason.class, seasonDataList) {
             @Override
-            public void bindView(VHSeason holder, Season season, int position) {
+            public void bindView(VHSeason holder, final Season season, int position) {
                 holder.bindData(season);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        presenter.onClickList();
+                        presenter.onClickList(season);
                     }
                 });
             }
@@ -80,8 +82,10 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
     }
 
     @Override
-    public void openSeason() {
-        openNewActivity(SeasonActivity.class, false);
+    public void openSeason(Season season) {
+        Bundle bundle = new Bundle();
+        bundle.putString(BaseConstant.SEASON_CODE, App.getInstance().getGson().toJson(season));
+        openNewActivity(SeasonActivity.class, bundle, false);
     }
 
     @Override

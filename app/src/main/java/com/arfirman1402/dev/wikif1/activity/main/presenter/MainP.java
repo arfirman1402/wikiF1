@@ -1,6 +1,7 @@
 package com.arfirman1402.dev.wikif1.activity.main.presenter;
 
 import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
+import com.arfirman1402.dev.wikif1.util.model.Season;
 
 import rx.Observable;
 
@@ -11,5 +12,5 @@ import rx.Observable;
 public interface MainP {
     Observable<IMainM> getResult();
 
-    void onClickList();
+    void onClickList(Season season);
 }
