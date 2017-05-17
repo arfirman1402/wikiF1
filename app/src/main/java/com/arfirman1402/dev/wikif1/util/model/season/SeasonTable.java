@@ -1,4 +1,4 @@
-package com.arfirman1402.dev.wikif1.util.model;
+package com.arfirman1402.dev.wikif1.util.model.season;
 
 import com.google.gson.annotations.SerializedName;
 

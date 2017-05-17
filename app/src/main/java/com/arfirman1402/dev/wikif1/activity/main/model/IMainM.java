@@ -3,7 +3,7 @@ package com.arfirman1402.dev.wikif1.activity.main.model;
 import android.util.Log;
 
 import com.arfirman1402.dev.wikif1.base.BaseUrl;
-import com.arfirman1402.dev.wikif1.util.model.MRData;
+import com.arfirman1402.dev.wikif1.util.model.season.SeasonList;
 import com.google.gson.annotations.SerializedName;
 
 import okhttp3.Request;
@@ -14,11 +14,11 @@ import okhttp3.Request;
 
 public class IMainM implements MainM {
     @SerializedName("MRData")
-    private MRData mrData;
+    private SeasonList seasonList;
     private String TAG = getClass().getSimpleName();
 
-    public MRData getMrData() {
-        return mrData;
+    public SeasonList getSeasonList() {
+        return seasonList;
     }
 
     @Override

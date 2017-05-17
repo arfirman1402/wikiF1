@@ -16,7 +16,7 @@ import com.arfirman1402.dev.wikif1.activity.season.view.SeasonActivity;
 import com.arfirman1402.dev.wikif1.base.BaseActivity;
 import com.arfirman1402.dev.wikif1.base.BaseAdapter;
 import com.arfirman1402.dev.wikif1.base.BaseConstant;
-import com.arfirman1402.dev.wikif1.util.model.Season;
+import com.arfirman1402.dev.wikif1.util.model.season.Season;
 
 import java.util.ArrayList;
 
@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
     @Override
     public void onNext(final IMainM result) {
         seasonDataList.clear();
-        seasonDataList.addAll(result.getMrData().getSeasonTable().getSeasons());
+        seasonDataList.addAll(result.getSeasonList().getSeasonTable().getSeasons());
 
         seasonAdapter.notifyDataSetChanged();
     }

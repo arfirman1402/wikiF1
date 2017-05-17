@@ -5,7 +5,6 @@ package com.arfirman1402.dev.wikif1.base;
  */
 
 public class BaseModel {
-
     private String xmlns;
     private String series;
     private String url;

@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.base.BaseHolder;
-import com.arfirman1402.dev.wikif1.util.model.Season;
+import com.arfirman1402.dev.wikif1.util.model.season.Season;
 
 import butterknife.BindView;
 

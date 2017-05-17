@@ -4,7 +4,7 @@ import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.activity.main.model.MainM;
 import com.arfirman1402.dev.wikif1.activity.main.view.MainV;
-import com.arfirman1402.dev.wikif1.util.model.Season;
+import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import com.arfirman1402.dev.wikif1.util.okhttp.OkHttpTime;
 import com.arfirman1402.dev.wikif1.util.okhttp.RxOkhttp;
 
