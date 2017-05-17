@@ -10,10 +10,7 @@ import com.arfirman1402.dev.wikif1.main.presenter.IMainP;
 import com.arfirman1402.dev.wikif1.main.presenter.MainP;
 import com.google.gson.GsonBuilder;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
-public class MainActivity extends BaseActivity implements MainV {
+public class MainActivity extends BaseActivity<IMainM> implements MainV {
     private final String TAG = getClass().getSimpleName();
 
     @Override
@@ -23,19 +20,17 @@ public class MainActivity extends BaseActivity implements MainV {
 
         MainP presenter = new IMainP(this);
 
-        subscription = presenter.getResult()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io()).subscribe(this::onSuccess, this::onError, this::onCompleted);
-    }
-
-    @Override
-    public void onSuccess(IMainM result) {
-        Log.d(TAG, "onSuccess: " + new GsonBuilder().create().toJson(result.getMrData().getSeasonTable().getSeasons()));
+        setSubscribe(presenter.getResult(), this);
     }
 
     @Override
     public void onError(Throwable error) {
         Log.d(TAG, "onError: " + error.toString());
+    }
+
+    @Override
+    public void onNext(IMainM result) {
+        Log.d(TAG, "onSuccess: " + new GsonBuilder().create().toJson(result.getMrData().getSeasonTable().getSeasons()));
     }
 
     @Override

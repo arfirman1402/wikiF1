@@ -1,4 +1,4 @@
-package com.arfirman1402.dev.wikif1.util;
+package com.arfirman1402.dev.wikif1.util.okhttp;
 
 import java.util.concurrent.TimeUnit;
 
