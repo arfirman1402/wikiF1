@@ -1,10 +1,9 @@
-package com.arfirman1402.dev.wikif1.main.view.holder;
+package com.arfirman1402.dev.wikif1.activity.main.view.holder;
 
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.base.BaseHolder;
@@ -32,11 +31,5 @@ public class VHSeason extends BaseHolder {
     public void bindData(final Season season) {
         seasonYear.setText(season.getSeason());
         Log.d(TAG, "bindData: " + season.getSeason() + " - " + season.getUrl());
-        seasonCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), season.getSeason() + " - " + season.getUrl(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

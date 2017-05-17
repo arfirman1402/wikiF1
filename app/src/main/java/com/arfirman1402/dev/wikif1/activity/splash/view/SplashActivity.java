@@ -1,13 +1,13 @@
-package com.arfirman1402.dev.wikif1.splash.view;
+package com.arfirman1402.dev.wikif1.activity.splash.view;
 
 import android.os.Bundle;
 
 import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.base.BaseActivity;
 import com.arfirman1402.dev.wikif1.base.BaseConstant;
-import com.arfirman1402.dev.wikif1.main.view.MainActivity;
-import com.arfirman1402.dev.wikif1.splash.presenter.ISplashP;
-import com.arfirman1402.dev.wikif1.splash.presenter.SplashP;
+import com.arfirman1402.dev.wikif1.activity.main.view.MainActivity;
+import com.arfirman1402.dev.wikif1.activity.splash.presenter.ISplashP;
+import com.arfirman1402.dev.wikif1.activity.splash.presenter.SplashP;
 
 /**
  * Created by alodokter-it on 16/05/17 -- SplashActivity.

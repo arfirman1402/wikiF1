@@ -1,9 +1,9 @@
-package com.arfirman1402.dev.wikif1.main.presenter;
+package com.arfirman1402.dev.wikif1.activity.main.presenter;
 
 import com.arfirman1402.dev.wikif1.App;
-import com.arfirman1402.dev.wikif1.main.model.IMainM;
-import com.arfirman1402.dev.wikif1.main.model.MainM;
-import com.arfirman1402.dev.wikif1.main.view.MainV;
+import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
+import com.arfirman1402.dev.wikif1.activity.main.model.MainM;
+import com.arfirman1402.dev.wikif1.activity.main.view.MainV;
 import com.arfirman1402.dev.wikif1.util.okhttp.OkHttpTime;
 import com.arfirman1402.dev.wikif1.util.okhttp.RxOkhttp;
 
@@ -34,5 +34,10 @@ public class IMainP implements MainP {
                         return App.getInstance().getGson().fromJson(json, IMainM.class);
                     }
                 });
+    }
+
+    @Override
+    public void onClickList() {
+        view.openSeason();
     }
 }

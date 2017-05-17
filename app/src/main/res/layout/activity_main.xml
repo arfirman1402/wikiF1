@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arfirman1402.dev.wikif1.main.view.MainActivity">
+    tools:context=".activity.main.view.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/main_season_list"

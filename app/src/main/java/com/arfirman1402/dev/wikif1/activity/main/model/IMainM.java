@@ -1,4 +1,4 @@
-package com.arfirman1402.dev.wikif1.main.model;
+package com.arfirman1402.dev.wikif1.activity.main.model;
 
 import android.util.Log;
 
