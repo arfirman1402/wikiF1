@@ -45,7 +45,7 @@ public abstract class BaseAdapter<Model, ViewHolder extends RecyclerView.ViewHol
         return mData.size();
     }
 
-    abstract void bindView(ViewHolder holder, Model model, int position);
+    public abstract void bindView(ViewHolder holder, Model model, int position);
 
     private Model getItem(int position) {
         return mData.get(position);

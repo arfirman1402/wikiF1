@@ -9,8 +9,9 @@ public class BaseUrl {
     private static final String F1_SERIES = "f1";
     private static final String SEASONS = "/seasons";
     private static final String RESULT_JSON = ".json";
+    private static final String UNLIMITED_DATA = "limit=20";
 
     public static String getSeasonList() {
-        return API_URL + F1_SERIES + SEASONS + RESULT_JSON;
+        return API_URL + F1_SERIES + SEASONS + RESULT_JSON + "?" + UNLIMITED_DATA;
     }
 }

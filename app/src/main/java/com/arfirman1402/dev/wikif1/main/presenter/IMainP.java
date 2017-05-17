@@ -1,11 +1,11 @@
 package com.arfirman1402.dev.wikif1.main.presenter;
 
+import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.main.model.MainM;
 import com.arfirman1402.dev.wikif1.main.view.MainV;
 import com.arfirman1402.dev.wikif1.util.okhttp.OkHttpTime;
 import com.arfirman1402.dev.wikif1.util.okhttp.RxOkhttp;
-import com.google.gson.GsonBuilder;
 
 import okhttp3.Request;
 import rx.Observable;
@@ -31,7 +31,7 @@ public class IMainP implements MainP {
                 .map(new Func1<String, IMainM>() {
                     @Override
                     public IMainM call(String json) {
-                        return new GsonBuilder().create().fromJson(json, IMainM.class);
+                        return App.getInstance().getGson().fromJson(json, IMainM.class);
                     }
                 });
     }
