@@ -4,6 +4,7 @@ import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 import com.arfirman1402.dev.wikif1.activity.season.model.SeasonM;
 import com.arfirman1402.dev.wikif1.activity.season.view.SeasonV;
+import com.arfirman1402.dev.wikif1.util.model.race.Race;
 import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import com.arfirman1402.dev.wikif1.util.okhttp.OkHttpTime;
 import com.arfirman1402.dev.wikif1.util.okhttp.RxOkhttp;
@@ -35,5 +36,10 @@ public class ISeasonP implements SeasonP {
                         return App.getInstance().getGson().fromJson(json, ISeasonM.class);
                     }
                 });
+    }
+
+    @Override
+    public void onClickList(Race race) {
+        view.openRace(race);
     }
 }

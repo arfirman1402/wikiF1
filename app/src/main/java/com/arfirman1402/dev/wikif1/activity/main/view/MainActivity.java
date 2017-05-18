@@ -36,11 +36,11 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
         super.onCreate(savedInstanceState);
         bind(R.layout.activity_main);
 
+        initView();
+
         presenter = new IMainP(this);
 
         setSubscribe(presenter.getResult(), this);
-
-        initView();
     }
 
     private void initView() {

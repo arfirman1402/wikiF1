@@ -1,6 +1,7 @@
 package com.arfirman1402.dev.wikif1.activity.season.view;
 
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
+import com.arfirman1402.dev.wikif1.util.model.race.Race;
 
 import rx.Observer;
 
@@ -17,4 +18,6 @@ public interface SeasonV extends Observer<ISeasonM> {
 
     @Override
     void onNext(ISeasonM result);
+
+    void openRace(Race race);
 }

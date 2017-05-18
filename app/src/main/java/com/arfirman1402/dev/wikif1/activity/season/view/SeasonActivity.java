@@ -1,17 +1,26 @@
 package com.arfirman1402.dev.wikif1.activity.season.view;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 import com.arfirman1402.dev.wikif1.activity.season.presenter.ISeasonP;
 import com.arfirman1402.dev.wikif1.activity.season.presenter.SeasonP;
+import com.arfirman1402.dev.wikif1.activity.season.view.holder.VHRace;
 import com.arfirman1402.dev.wikif1.base.BaseActivity;
+import com.arfirman1402.dev.wikif1.base.BaseAdapter;
 import com.arfirman1402.dev.wikif1.base.BaseConstant;
 import com.arfirman1402.dev.wikif1.util.model.race.Race;
 import com.arfirman1402.dev.wikif1.util.model.season.Season;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
 
 /**
  * Created by alodokter-it on 17/05/17 -- SeasonActivity.
@@ -20,19 +29,53 @@ import com.arfirman1402.dev.wikif1.util.model.season.Season;
 public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
     private String TAG = this.getClass().getSimpleName();
     private SeasonP presenter;
+    private Season season;
+
+    @BindView(R.id.season_race_list)
+    RecyclerView seasonRaceList;
+    private ArrayList<Race> seasonRaceDataList;
+    private BaseAdapter<Race, VHRace> seasonRaceAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind(R.layout.activity_season_detail);
 
-        Season season = App.getInstance().getGson().fromJson(getIntent().getExtras().getString(BaseConstant.SEASON_CODE), Season.class);
+        season = App.getInstance().getGson().fromJson(getIntent().getExtras().getString(BaseConstant.SEASON_CODE), Season.class);
         Log.d(TAG, "onCreate: " + season.getSeason() + " - " + season.getUrl());
-        setTitle(season.getSeason());
+
+        initView();
 
         presenter = new ISeasonP(this);
 
         setSubscribe(presenter.getResult(season), this);
+    }
+
+    private void initView() {
+        setTitle(season.getSeason());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        seasonRaceList.setHasFixedSize(true);
+        seasonRaceList.setLayoutManager(layoutManager);
+
+        seasonRaceDataList = new ArrayList<>();
+
+        seasonRaceAdapter = new BaseAdapter<Race, VHRace>(R.layout.adapter_season_race_list, VHRace.class, seasonRaceDataList) {
+            @Override
+            public void bindView(VHRace holder, final Race race, int position) {
+                holder.bindData(race);
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        presenter.onClickList(race);
+                    }
+                });
+            }
+        };
+
+        seasonRaceList.setAdapter(seasonRaceAdapter);
     }
 
     @Override
@@ -47,9 +90,14 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
 
     @Override
     public void onNext(ISeasonM result) {
-        Log.d(TAG, "onNext: " + App.getInstance().getGson().toJson(result));
-        for (Race race : result.getRaceList().getRaceTable().getRaces()) {
-            Log.d(TAG, "onNext: " + race.getSeason() + " - " + race.getDate() + " - " + race.getRaceName() + " - " + race.getCircuit().getCircuitName() + " - " + race.getCircuit().getLocation().getLocality() + " - " + race.getCircuit().getLocation().getCountry());
-        }
+        seasonRaceDataList.clear();
+        seasonRaceDataList.addAll(result.getRaceList().getRaceTable().getRaces());
+
+        seasonRaceAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void openRace(Race race) {
+        Log.d(TAG, "openRace: " + race.getSeason() + " - " + race.getDate() + " - " + race.getRaceName() + " - " + race.getCircuit().getCircuitName() + " - " + race.getCircuit().getLocation().getLocality() + " - " + race.getCircuit().getLocation().getCountry());
     }
 }
