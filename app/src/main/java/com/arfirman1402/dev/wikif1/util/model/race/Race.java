@@ -1,5 +1,8 @@
 package com.arfirman1402.dev.wikif1.util.model.race;
 
+import com.arfirman1402.dev.wikif1.util.model.Circuit;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by alodokter-it on 16/05/17 -- Race.
  */
@@ -9,8 +12,9 @@ public class Race {
     private String round;
     private String url;
     private String raceName;
+    @SerializedName("Circuit")
+    private Circuit circuit;
     private String date;
-    private String time;
 
     public String getSeason() {
         return season;
@@ -28,11 +32,11 @@ public class Race {
         return raceName;
     }
 
-    public String getDate() {
-        return date;
+    public Circuit getCircuit() {
+        return circuit;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 }

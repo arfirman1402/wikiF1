@@ -1,7 +1,6 @@
 package com.arfirman1402.dev.wikif1.activity.season.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.arfirman1402.dev.wikif1.App;
@@ -23,13 +22,13 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
     private SeasonP presenter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind(R.layout.activity_season_detail);
 
         Season season = App.getInstance().getGson().fromJson(getIntent().getExtras().getString(BaseConstant.SEASON_CODE), Season.class);
-
         Log.d(TAG, "onCreate: " + season.getSeason() + " - " + season.getUrl());
+        setTitle(season.getSeason());
 
         presenter = new ISeasonP(this);
 
@@ -50,7 +49,7 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
     public void onNext(ISeasonM result) {
         Log.d(TAG, "onNext: " + App.getInstance().getGson().toJson(result));
         for (Race race : result.getRaceList().getRaceTable().getRaces()) {
-            Log.d(TAG, "onNext: " + race.getSeason() + " - " + race.getDate() + " - " + race.getRaceName());
+            Log.d(TAG, "onNext: " + race.getSeason() + " - " + race.getDate() + " - " + race.getRaceName() + " - " + race.getCircuit().getCircuitName() + " - " + race.getCircuit().getLocation().getLocality() + " - " + race.getCircuit().getLocation().getCountry());
         }
     }
 }
