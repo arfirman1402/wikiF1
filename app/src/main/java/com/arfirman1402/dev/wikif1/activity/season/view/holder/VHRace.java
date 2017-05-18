@@ -8,6 +8,11 @@ import com.arfirman1402.dev.wikif1.R;
 import com.arfirman1402.dev.wikif1.base.BaseHolder;
 import com.arfirman1402.dev.wikif1.util.model.race.Race;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 
 /**
@@ -38,6 +43,14 @@ public class VHRace extends BaseHolder {
         raceTitle.setText(race.getRaceName());
         raceDate.setText(race.getDate());
         raceLocation.setText(race.getCircuit().getCircuitName() + ", " + race.getCircuit().getLocation().getLocality() + ", " + race.getCircuit().getLocation().getCountry());
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(race.getDate());
+            String result = new SimpleDateFormat("EEE, dd MMMM yyyy", Locale.getDefault()).format(date);
+            raceDate.setText(result);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.d(TAG, "bindData: " + e.toString());
+        }
         Log.d(TAG, "bindData: " + race.getSeason() + " - " + race.getRaceName() + " - " + race.getDate() + " - " + race.getCircuit().getCircuitName() + ", " + race.getCircuit().getLocation().getLocality() + ", " + race.getCircuit().getLocation().getCountry());
     }
 }
