@@ -9,37 +9,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/race_season"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Season"
-            android:textSize="14sp" />
+            android:gravity="center_vertical"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/race_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title of Races"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/race_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/race_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Race Location"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/race_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title of Races"
-            android:textSize="18sp"
+            android:id="@+id/race_round"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="01"
+            android:gravity="center_vertical|right"
+            android:textSize="40sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/race_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/race_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Race Location"
-            android:textSize="14sp" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

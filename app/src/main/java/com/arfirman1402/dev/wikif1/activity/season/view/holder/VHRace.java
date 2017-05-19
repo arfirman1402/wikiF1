@@ -19,9 +19,9 @@ import butterknife.BindView;
  * Created by alodokter-it on 18/05/17 -- VHRace.
  */
 
-public class VHRace extends BaseHolder {
-    @BindView(R.id.race_season)
-    TextView raceSeason;
+public class VHRace extends BaseHolder<Race> {
+    @BindView(R.id.race_round)
+    TextView raceRound;
 
     @BindView(R.id.race_title)
     TextView raceTitle;
@@ -38,19 +38,20 @@ public class VHRace extends BaseHolder {
         super(itemView);
     }
 
-    public void bindData(Race race) {
-        raceSeason.setText(race.getSeason());
-        raceTitle.setText(race.getRaceName());
-        raceDate.setText(race.getDate());
-        raceLocation.setText(race.getCircuit().getCircuitName() + ", " + race.getCircuit().getLocation().getLocality() + ", " + race.getCircuit().getLocation().getCountry());
+    @Override
+    public void bindData(Race data) {
+        raceRound.setText(data.getRound());
+        raceTitle.setText(data.getRaceName());
+        raceDate.setText(data.getDate());
+        raceLocation.setText(data.getCircuit().getCircuitName() + ", " + data.getCircuit().getLocation().getLocality() + ", " + data.getCircuit().getLocation().getCountry());
         try {
-            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(race.getDate());
+            Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(data.getDate());
             String result = new SimpleDateFormat("EEE, dd MMMM yyyy", Locale.getDefault()).format(date);
             raceDate.setText(result);
         } catch (ParseException e) {
             e.printStackTrace();
             Log.d(TAG, "bindData: " + e.toString());
         }
-        Log.d(TAG, "bindData: " + race.getSeason() + " - " + race.getRaceName() + " - " + race.getDate() + " - " + race.getCircuit().getCircuitName() + ", " + race.getCircuit().getLocation().getLocality() + ", " + race.getCircuit().getLocation().getCountry());
+        Log.d(TAG, "bindData: " + data.getSeason() + " - " + data.getRaceName() + " - " + data.getDate() + " - " + data.getCircuit().getCircuitName() + ", " + data.getCircuit().getLocation().getLocality() + ", " + data.getCircuit().getLocation().getCountry());
     }
 }

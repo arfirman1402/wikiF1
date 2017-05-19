@@ -15,7 +15,7 @@ import butterknife.BindView;
  * Created by alodokter-it on 17/05/17 -- VHSeason.
  */
 
-public class VHSeason extends BaseHolder {
+public class VHSeason extends BaseHolder<Season> {
     private final String TAG = this.getClass().getSimpleName();
 
     @BindView(R.id.season_year)
@@ -28,8 +28,8 @@ public class VHSeason extends BaseHolder {
         super(itemView);
     }
 
-    public void bindData(final Season season) {
-        seasonYear.setText(season.getSeason());
-        Log.d(TAG, "bindData: " + season.getSeason() + " - " + season.getUrl());
+    public void bindData(Season data) {
+        seasonYear.setText(data.getSeason());
+        Log.d(TAG, "bindData: " + data.getSeason() + " - " + data.getUrl());
     }
 }
