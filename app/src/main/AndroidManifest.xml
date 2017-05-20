@@ -23,6 +23,9 @@
         <activity
             android:name=".activity.season.view.SeasonActivity"
             android:parentActivityName=".activity.main.view.MainActivity" />
+        <activity
+            android:name=".activity.race.view.RaceActivity"
+            android:parentActivityName=".activity.season.view.SeasonActivity" />
     </application>
 
 </manifest>

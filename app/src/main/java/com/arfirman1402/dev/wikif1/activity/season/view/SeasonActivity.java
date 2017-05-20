@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.R;
+import com.arfirman1402.dev.wikif1.activity.race.view.RaceActivity;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 import com.arfirman1402.dev.wikif1.activity.season.presenter.ISeasonP;
 import com.arfirman1402.dev.wikif1.activity.season.presenter.SeasonP;
@@ -39,7 +40,7 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bind(R.layout.activity_season_detail);
+        bind(R.layout.activity_season);
 
         season = App.getInstance().getGson().fromJson(getIntent().getExtras().getString(BaseConstant.SEASON_CODE), Season.class);
         Log.d(TAG, "onCreate: " + season.getSeason() + " - " + season.getUrl());
@@ -99,5 +100,8 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
     @Override
     public void openRace(Race race) {
         Log.d(TAG, "openRace: " + race.getSeason() + " - " + race.getDate() + " - " + race.getRaceName() + " - " + race.getCircuit().getCircuitName() + " - " + race.getCircuit().getLocation().getLocality() + " - " + race.getCircuit().getLocation().getCountry());
+        Bundle bundle = new Bundle();
+        bundle.putString(BaseConstant.RACE_CODE, App.getInstance().getGson().toJson(race));
+        openNewActivity(RaceActivity.class, bundle, false);
     }
 }

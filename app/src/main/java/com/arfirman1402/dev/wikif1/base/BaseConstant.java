@@ -7,4 +7,5 @@ package com.arfirman1402.dev.wikif1.base;
 public class BaseConstant {
     public static final int SPLASH_TIME = 3000;
     public static final String SEASON_CODE = "season";
+    public static final String RACE_CODE = "race";
 }
