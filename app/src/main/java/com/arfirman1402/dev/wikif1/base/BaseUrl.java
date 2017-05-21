@@ -11,7 +11,8 @@ public class BaseUrl {
     private static final String F1_SERIES = "f1";
     private static final String SEASONS = "/seasons";
     private static final String RESULT_JSON = ".json";
-    private static final String LIMIT_DATA = "limit=20";
+    private static final String LIMIT_DATA = "limit=2000";
+    private static final String RACE_RESULTS = "/results";
 
     public static String getSeasonList() {
         return API_URL + F1_SERIES + SEASONS + RESULT_JSON + "?" + LIMIT_DATA;
