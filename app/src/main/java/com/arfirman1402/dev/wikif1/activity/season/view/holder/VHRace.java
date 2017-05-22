@@ -40,7 +40,8 @@ public class VHRace extends BaseHolder<Race> {
 
     @Override
     public void bindData(Race data) {
-        raceRound.setText(data.getRound());
+        if (Integer.parseInt(data.getRound()) < 10) raceRound.setText("0" + data.getRound());
+        else raceRound.setText(data.getRound());
         raceTitle.setText(data.getRaceName());
         raceDate.setText(data.getDate());
         raceLocation.setText(data.getCircuit().getCircuitName() + ", " + data.getCircuit().getLocation().getLocality() + ", " + data.getCircuit().getLocation().getCountry());

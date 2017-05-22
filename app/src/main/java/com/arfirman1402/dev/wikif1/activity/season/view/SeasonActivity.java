@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.arfirman1402.dev.wikif1.App;
@@ -103,5 +104,15 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
         Bundle bundle = new Bundle();
         bundle.putString(BaseConstant.RACE_CODE, App.getInstance().getGson().toJson(race));
         openNewActivity(RaceActivity.class, bundle, false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+        }
+        return true;
     }
 }
