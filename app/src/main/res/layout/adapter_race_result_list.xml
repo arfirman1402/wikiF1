@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:orientation="vertical">
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/colorBlackLight"
+    app:cardElevation="2dp"
+    app:contentPadding="8dp">
 
-    <TextView
-        android:id="@+id/race_position"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="P1"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/race_driver_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Driver Name"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/race_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P1"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/race_constructor_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Constructor Name"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/race_driver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Driver Name"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/race_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1:24:11,6"
-        android:textSize="14sp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/race_constructor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Constructor Name"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/race_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1:24:11,6"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
