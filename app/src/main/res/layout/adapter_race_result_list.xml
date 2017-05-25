@@ -2,28 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_marginBottom="16dp"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/race_title"
+        android:id="@+id/race_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title of Races"
+        android:text="P1"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/race_date"
+        android:id="@+id/race_driver_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date"
+        android:text="Driver Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/race_constructor_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Constructor Name"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/race_location"
+        android:id="@+id/race_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Race Location"
+        android:text="1:24:11,6"
         android:textSize="14sp" />
 </LinearLayout>

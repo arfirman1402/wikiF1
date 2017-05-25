@@ -18,8 +18,17 @@ import butterknife.BindView;
 public class VHResult extends BaseHolder<Result> {
     private String TAG = this.getClass().getSimpleName();
 
-    @BindView(R.id.race_title)
-    TextView raceTitle;
+    @BindView(R.id.race_position)
+    TextView racePosition;
+
+    @BindView(R.id.race_driver_name)
+    TextView raceDriverName;
+
+    @BindView(R.id.race_constructor_name)
+    TextView raceConstructorName;
+
+    @BindView(R.id.race_time)
+    TextView raceTime;
 
     public VHResult(View itemView) {
         super(itemView);
@@ -28,6 +37,10 @@ public class VHResult extends BaseHolder<Result> {
     @Override
     public void bindData(Result data) {
         Log.d(TAG, "bindData: " + App.getInstance().getGson().toJson(data));
-        raceTitle.setText(App.getInstance().getGson().toJson(data));
+        racePosition.setText("P" + data.getPosition());
+        raceDriverName.setText("#" + data.getNumber() + " " + data.getDriver().getGivenName() + " " + data.getDriver().getFamilyName());
+        raceConstructorName.setText("Team : " + data.getConstructor().getName());
+        if (data.getTime() != null) raceTime.setText(data.getTime().getTime());
+        else raceTime.setText(data.getStatus());
     }
 }
