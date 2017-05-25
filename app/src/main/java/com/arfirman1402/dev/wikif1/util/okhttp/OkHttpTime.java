@@ -10,7 +10,7 @@ import okhttp3.OkHttpClient;
 
 public class OkHttpTime {
     public static OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(10000L, TimeUnit.MILLISECONDS)
-            .readTimeout(4000L, TimeUnit.MILLISECONDS)
+            .connectTimeout(30000L, TimeUnit.MILLISECONDS)
+            .readTimeout(30000L, TimeUnit.MILLISECONDS)
             .build();
 }
