@@ -1,11 +1,11 @@
 package com.arfirman1402.dev.wikif1.util.retrofit;
 
-import com.arfirman1402.dev.wikif1.util.model.season.SeasonList;
+import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
+import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
+import retrofit.http.GET;
+import retrofit.http.Path;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -13,11 +13,12 @@ import rx.Observable;
  */
 
 public interface ApiService {
-    String API_URL = "http://ergast.com/api/f1/";
+    String API_URL = "http://ergast.com/api/f1";
+    int DATA_LIMIT = 2000;
 
-    @GET("seasons.json")
-    Observable<SeasonList> getSeasonList(@Query("limit") int limit);
+    @GET("/seasons.json")
+    Observable<IMainM> getSeasonList(@Query("limit") int limit);
 
-    @GET("{season}.json")
-    Observable<SeasonList> getSeasonDetail(@Path("season") String season,  @Query("limit") int limit);
+    @GET("/{season}.json")
+    Observable<ISeasonM> getSeasonDetail(@Path("season") String season, @Query("limit") int limit);
 }
