@@ -1,6 +1,7 @@
 package com.arfirman1402.dev.wikif1.util.retrofit;
 
 import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
+import com.arfirman1402.dev.wikif1.activity.race.model.IRaceM;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 
 import retrofit.http.GET;
@@ -21,4 +22,7 @@ public interface ApiService {
 
     @GET("/{season}.json")
     Observable<ISeasonM> getSeasonDetail(@Path("season") String season, @Query("limit") int limit);
+
+    @GET("/{season}/{round}/results.json")
+    Observable<IRaceM> getRaceResult(@Path("season") String season, @Path("round") String round, @Query("limit") int limit);
 }
