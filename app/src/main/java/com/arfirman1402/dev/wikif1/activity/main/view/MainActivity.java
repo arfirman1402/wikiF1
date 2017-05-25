@@ -44,6 +44,8 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
     }
 
     private void initView() {
+        setTitle("Formula One - F1");
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 

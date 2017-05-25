@@ -1,6 +1,5 @@
 package com.arfirman1402.dev.wikif1.activity.main.view.holder;
 
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -20,9 +19,6 @@ public class VHSeason extends BaseHolder<Season> {
 
     @BindView(R.id.season_year)
     TextView seasonYear;
-
-    @BindView(R.id.season_card_view)
-    CardView seasonCardView;
 
     public VHSeason(View itemView) {
         super(itemView);
