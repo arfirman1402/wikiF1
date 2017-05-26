@@ -11,12 +11,6 @@ import rx.Observer;
 
 public interface SeasonV extends Observer<ISeasonM> {
     @Override
-    void onCompleted();
-
-    @Override
-    void onError(Throwable e);
-
-    @Override
     void onNext(ISeasonM result);
 
     void openRace(Race race);

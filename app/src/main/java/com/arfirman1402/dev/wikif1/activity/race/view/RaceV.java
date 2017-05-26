@@ -10,11 +10,5 @@ import rx.Observer;
 
 public interface RaceV extends Observer<IRaceM> {
     @Override
-    void onCompleted();
-
-    @Override
-    void onError(Throwable e);
-
-    @Override
     void onNext(IRaceM result);
 }

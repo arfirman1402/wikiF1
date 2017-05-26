@@ -35,5 +35,4 @@ public class Location {
     public String getCountry() {
         return country;
     }
-
 }

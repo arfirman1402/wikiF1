@@ -7,5 +7,4 @@ import com.arfirman1402.dev.wikif1.base.BaseM;
  */
 
 public interface RaceM extends BaseM {
-
 }

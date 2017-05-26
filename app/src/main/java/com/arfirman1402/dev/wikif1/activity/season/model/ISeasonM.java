@@ -1,5 +1,6 @@
 package com.arfirman1402.dev.wikif1.activity.season.model;
 
+import com.arfirman1402.dev.wikif1.base.BaseConstant;
 import com.arfirman1402.dev.wikif1.base.IBaseM;
 import com.arfirman1402.dev.wikif1.util.model.race.RaceList;
 import com.google.gson.annotations.SerializedName;
@@ -9,9 +10,8 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class ISeasonM extends IBaseM implements SeasonM {
-    @SerializedName("MRData")
+    @SerializedName(BaseConstant.BASE_DATA)
     private RaceList raceList;
-    private String TAG = getClass().getSimpleName();
 
     public RaceList getRaceList() {
         return raceList;
