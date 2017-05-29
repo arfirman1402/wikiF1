@@ -7,7 +7,7 @@ import com.arfirman1402.dev.wikif1.util.model.race.Race;
 import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import com.arfirman1402.dev.wikif1.util.retrofit.ApiService;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by alodokter-it on 17/05/17 -- ISeasonP.

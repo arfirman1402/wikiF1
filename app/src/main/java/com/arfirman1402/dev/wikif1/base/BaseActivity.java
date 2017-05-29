@@ -5,19 +5,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by alodokter-it on 16/05/17 -- BaseActivity.
  */
 
 public class BaseActivity<T> extends AppCompatActivity {
-    public Subscription subscription = new CompositeSubscription();
+    public CompositeDisposable subscription = new CompositeDisposable();
 
     protected void bind(int layout) {
         setContentView(layout);
@@ -35,15 +34,15 @@ public class BaseActivity<T> extends AppCompatActivity {
         if (isFinish) finish();
     }
 
-    protected void setSubscribe(Observable<T> result, Observer<T> observer) {
-        subscription = result
+    protected void setSubscribe(Observable<T> result, DisposableObserver<T> observer) {
+        subscription.add(result
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io()).subscribe(observer);
+                .subscribeOn(Schedulers.io()).subscribeWith(observer));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        subscription.unsubscribe();
+        subscription.clear();
     }
 }

@@ -21,6 +21,7 @@ import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import io.reactivex.observers.DisposableObserver;
 
 public class MainActivity extends BaseActivity<IMainM> implements MainV {
     private final String TAG = getClass().getSimpleName();
@@ -40,7 +41,25 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
 
         presenter = new IMainP(this);
 
-        setSubscribe(presenter.getResult(), this);
+        setSubscribe(presenter.getResult(), new DisposableObserver<IMainM>() {
+            @Override
+            public void onError(Throwable error) {
+                Log.d(TAG, "onError: " + error.toString());
+            }
+
+            @Override
+            public void onNext(final IMainM result) {
+                seasonDataList.clear();
+                seasonDataList.addAll(result.getSeasonList().getSeasonTable().getSeasons());
+
+                seasonAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onCompleted: Has reached");
+            }
+        });
     }
 
     private void initView() {
@@ -71,27 +90,9 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
     }
 
     @Override
-    public void onError(Throwable error) {
-        Log.d(TAG, "onError: " + error.toString());
-    }
-
-    @Override
-    public void onNext(final IMainM result) {
-        seasonDataList.clear();
-        seasonDataList.addAll(result.getSeasonList().getSeasonTable().getSeasons());
-
-        seasonAdapter.notifyDataSetChanged();
-    }
-
-    @Override
     public void openSeason(Season season) {
         Bundle bundle = new Bundle();
         bundle.putString(BaseConstant.SEASON_CODE, App.getInstance().getGson().toJson(season));
         openNewActivity(SeasonActivity.class, bundle, false);
-    }
-
-    @Override
-    public void onCompleted() {
-        Log.d(TAG, "onCompleted: Has reached");
     }
 }

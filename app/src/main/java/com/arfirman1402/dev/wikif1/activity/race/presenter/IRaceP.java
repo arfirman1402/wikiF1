@@ -6,7 +6,7 @@ import com.arfirman1402.dev.wikif1.activity.race.view.RaceV;
 import com.arfirman1402.dev.wikif1.util.model.race.Race;
 import com.arfirman1402.dev.wikif1.util.retrofit.ApiService;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by arfirman1402 on 21/05/17.

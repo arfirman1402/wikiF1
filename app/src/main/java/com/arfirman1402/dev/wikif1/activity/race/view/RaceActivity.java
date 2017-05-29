@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
+import io.reactivex.observers.DisposableObserver;
 
 /**
  * Created by arfirman1402 on 21/05/17.
@@ -66,7 +67,25 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
 
         presenter = new IRaceP(this);
 
-        setSubscribe(presenter.getResult(race), this);
+        setSubscribe(presenter.getResult(race), new DisposableObserver<IRaceM>() {
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onCompleted: has reached");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: " + e.toString());
+            }
+
+            @Override
+            public void onNext(IRaceM result) {
+                raceResultDataList.clear();
+                raceResultDataList.addAll(result.getRaceList().getRaceTable().getRaces().get(0).getResults());
+
+                raceResultAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void initView() {
@@ -110,23 +129,5 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
                 break;
         }
         return true;
-    }
-
-    @Override
-    public void onCompleted() {
-        Log.d(TAG, "onCompleted: has reached");
-    }
-
-    @Override
-    public void onError(Throwable e) {
-        Log.d(TAG, "onError: " + e.toString());
-    }
-
-    @Override
-    public void onNext(IRaceM result) {
-        raceResultDataList.clear();
-        raceResultDataList.addAll(result.getRaceList().getRaceTable().getRaces().get(0).getResults());
-
-        raceResultAdapter.notifyDataSetChanged();
     }
 }

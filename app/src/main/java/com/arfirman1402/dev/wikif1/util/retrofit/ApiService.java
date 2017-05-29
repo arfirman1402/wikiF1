@@ -4,25 +4,25 @@ import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.activity.race.model.IRaceM;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
 
-import retrofit.http.GET;
-import retrofit.http.Path;
-import retrofit.http.Query;
-import rx.Observable;
+import io.reactivex.Observable;
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by arfirman1402 on 25/05/17.
  */
 
 public interface ApiService {
-    String API_URL = "http://ergast.com/api/f1";
+    String API_URL = "http://ergast.com/api/f1/";
     int DATA_LIMIT = 2000;
 
-    @GET("/seasons.json")
+    @GET("seasons.json")
     Observable<IMainM> getSeasonList(@Query("limit") int limit);
 
-    @GET("/{season}.json")
+    @GET("{season}.json")
     Observable<ISeasonM> getSeasonDetail(@Path("season") String season, @Query("limit") int limit);
 
-    @GET("/{season}/{round}/results.json")
+    @GET("{season}/{round}/results.json")
     Observable<IRaceM> getRaceResult(@Path("season") String season, @Path("round") String round, @Query("limit") int limit);
 }

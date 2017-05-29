@@ -23,6 +23,7 @@ import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import io.reactivex.observers.DisposableObserver;
 
 /**
  * Created by alodokter-it on 17/05/17 -- SeasonActivity.
@@ -50,7 +51,25 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
 
         presenter = new ISeasonP(this);
 
-        setSubscribe(presenter.getResult(season), this);
+        setSubscribe(presenter.getResult(season), new DisposableObserver<ISeasonM>() {
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onCompleted: has Reached");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError: " + e.toString());
+            }
+
+            @Override
+            public void onNext(ISeasonM result) {
+                seasonRaceDataList.clear();
+                seasonRaceDataList.addAll(result.getRaceList().getRaceTable().getRaces());
+
+                seasonRaceAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void initView() {
@@ -78,24 +97,6 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
         };
 
         seasonRaceList.setAdapter(seasonRaceAdapter);
-    }
-
-    @Override
-    public void onCompleted() {
-        Log.d(TAG, "onCompleted: has Reached");
-    }
-
-    @Override
-    public void onError(Throwable e) {
-        Log.d(TAG, "onError: " + e.toString());
-    }
-
-    @Override
-    public void onNext(ISeasonM result) {
-        seasonRaceDataList.clear();
-        seasonRaceDataList.addAll(result.getRaceList().getRaceTable().getRaces());
-
-        seasonRaceAdapter.notifyDataSetChanged();
     }
 
     @Override
