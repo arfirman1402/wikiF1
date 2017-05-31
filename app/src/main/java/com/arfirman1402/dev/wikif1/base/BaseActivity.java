@@ -3,6 +3,7 @@ package com.arfirman1402.dev.wikif1.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
@@ -44,5 +45,15 @@ public class BaseActivity<T> extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         subscription.clear();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+        }
+        return true;
     }
 }

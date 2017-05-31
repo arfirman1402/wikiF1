@@ -106,14 +106,4 @@ public class SeasonActivity extends BaseActivity<ISeasonM> implements SeasonV {
         bundle.putString(BaseConstant.RACE_CODE, App.getInstance().getGson().toJson(race));
         openNewActivity(RaceActivity.class, bundle, false);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                super.onBackPressed();
-                break;
-        }
-        return true;
-    }
 }

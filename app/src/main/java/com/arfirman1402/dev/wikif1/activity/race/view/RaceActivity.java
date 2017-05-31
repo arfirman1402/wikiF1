@@ -89,7 +89,7 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
     }
 
     private void initView() {
-        setTitle(race.getRaceName());
+        setTitle(race.getSeason() + " " + race.getRaceName());
         if (Integer.parseInt(race.getRound()) < 10) raceRound.setText("Round 0" + race.getRound());
         else raceRound.setText("Round " + race.getRound());
         raceTitle.setText(race.getRaceName());
@@ -119,15 +119,5 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
         };
 
         raceResultList.setAdapter(raceResultAdapter);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                super.onBackPressed();
-                break;
-        }
-        return true;
     }
 }
