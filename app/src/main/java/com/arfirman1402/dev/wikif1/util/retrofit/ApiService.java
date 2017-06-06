@@ -14,7 +14,7 @@ import retrofit2.http.Query;
  */
 
 public interface ApiService {
-    String API_URL = "http://ergast.com/api/f1/";
+    String API_URL = "https://ergast.com/api/f1/";
     int DATA_LIMIT = 2000;
 
     @GET("seasons.json")
