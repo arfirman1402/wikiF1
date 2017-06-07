@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.arfirman1402.dev.wikif1.App;
@@ -108,6 +107,7 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
 
         raceResultList.setHasFixedSize(true);
         raceResultList.setLayoutManager(layoutManager);
+        raceResultList.setNestedScrollingEnabled(false);
 
         raceResultDataList = new ArrayList<>();
 
