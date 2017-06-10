@@ -24,7 +24,7 @@ public class IMainP implements MainP {
     @Override
     public Observable<IMainM> getResult() {
         ApiService service = model.build();
-        return service.getSeasonList(ApiService.DATA_LIMIT);
+        return null;
     }
 
     @Override

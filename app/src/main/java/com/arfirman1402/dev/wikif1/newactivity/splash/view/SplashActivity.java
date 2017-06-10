@@ -55,10 +55,4 @@ public class SplashActivity extends BaseActivity<ISplashM> implements SplashV {
         bundle.putString("seasons", App.getInstance().getGson().toJson(seasons));
         openNewActivity(MainActivity.class, bundle, true);
     }
-
-    public void openMain(ISplashM result) {
-        Bundle bundle = new Bundle();
-        bundle.putString("result", App.getInstance().getGson().toJson(result.getSeasonList().getSeasonTable().getSeasons()));
-        openNewActivity(MainActivity.class, bundle, true);
-    }
 }

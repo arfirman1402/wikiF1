@@ -22,13 +22,13 @@ public class IMainP implements MainP {
     }
 
     @Override
-    public Observable<IMainM> getResult() {
+    public Observable<IMainM> getResult(Season season) {
         ApiService service = model.build();
-        return null;
+        return service.getSeasonDetail(season.getSeason(), ApiService.DATA_LIMIT);
     }
 
     @Override
     public void onClickList(Season season) {
-        view.openSeason(season);
+        view.getData(season);
     }
 }

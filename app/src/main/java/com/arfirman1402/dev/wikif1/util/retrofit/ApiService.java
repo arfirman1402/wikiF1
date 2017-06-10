@@ -1,8 +1,7 @@
 package com.arfirman1402.dev.wikif1.util.retrofit;
 
-import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.activity.race.model.IRaceM;
-import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
+import com.arfirman1402.dev.wikif1.newactivity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.newactivity.splash.model.ISplashM;
 
 import io.reactivex.Observable;
@@ -21,11 +20,8 @@ public interface ApiService {
     @GET("seasons.json")
     Observable<ISplashM> getSplashSeasonList(@Query("limit") int limit);
 
-    @GET("seasons.json")
-    Observable<IMainM> getSeasonList(@Query("limit") int limit);
-
     @GET("{season}.json")
-    Observable<ISeasonM> getSeasonDetail(@Path("season") String season, @Query("limit") int limit);
+    Observable<IMainM> getSeasonDetail(@Path("season") String season, @Query("limit") int limit);
 
     @GET("{season}/{round}/results.json")
     Observable<IRaceM> getRaceResult(@Path("season") String season, @Path("round") String round, @Query("limit") int limit);

@@ -1,7 +1,5 @@
 package com.arfirman1402.dev.wikif1.newactivity.splash.presenter;
 
-import android.os.Handler;
-
 import com.arfirman1402.dev.wikif1.newactivity.splash.model.ISplashM;
 import com.arfirman1402.dev.wikif1.newactivity.splash.model.SplashM;
 import com.arfirman1402.dev.wikif1.newactivity.splash.view.SplashV;

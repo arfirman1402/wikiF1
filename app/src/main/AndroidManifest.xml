@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".newactivity.main.view.MainActivity" />
         <activity
-            android:name=".activity.season.view.SeasonActivity"
+            android:name=".newactivity.season.view.SeasonActivity"
             android:parentActivityName=".activity.main.view.MainActivity" />
         <activity
             android:name=".activity.race.view.RaceActivity"

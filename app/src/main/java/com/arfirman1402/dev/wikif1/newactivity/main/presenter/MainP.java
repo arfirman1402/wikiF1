@@ -10,7 +10,7 @@ import io.reactivex.Observable;
  */
 
 public interface MainP {
-    Observable<IMainM> getResult();
+    Observable<IMainM> getResult(Season season);
 
     void onClickList(Season season);
 }

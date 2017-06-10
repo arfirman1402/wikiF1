@@ -1,8 +1,8 @@
-package com.arfirman1402.dev.wikif1.activity.season.presenter;
+package com.arfirman1402.dev.wikif1.newactivity.season.presenter;
 
-import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
-import com.arfirman1402.dev.wikif1.activity.season.model.SeasonM;
-import com.arfirman1402.dev.wikif1.activity.season.view.SeasonV;
+import com.arfirman1402.dev.wikif1.newactivity.season.model.ISeasonM;
+import com.arfirman1402.dev.wikif1.newactivity.season.model.SeasonM;
+import com.arfirman1402.dev.wikif1.newactivity.season.view.SeasonV;
 import com.arfirman1402.dev.wikif1.util.model.race.Race;
 import com.arfirman1402.dev.wikif1.util.model.season.Season;
 import com.arfirman1402.dev.wikif1.util.retrofit.ApiService;
