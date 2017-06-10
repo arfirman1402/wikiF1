@@ -3,6 +3,7 @@ package com.arfirman1402.dev.wikif1.util.retrofit;
 import com.arfirman1402.dev.wikif1.activity.main.model.IMainM;
 import com.arfirman1402.dev.wikif1.activity.race.model.IRaceM;
 import com.arfirman1402.dev.wikif1.activity.season.model.ISeasonM;
+import com.arfirman1402.dev.wikif1.newactivity.splash.model.ISplashM;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -16,6 +17,9 @@ import retrofit2.http.Query;
 public interface ApiService {
     String API_URL = "https://ergast.com/api/f1/";
     int DATA_LIMIT = 2000;
+
+    @GET("seasons.json")
+    Observable<ISplashM> getSplashSeasonList(@Query("limit") int limit);
 
     @GET("seasons.json")
     Observable<IMainM> getSeasonList(@Query("limit") int limit);
