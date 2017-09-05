@@ -21,6 +21,8 @@ import com.arfirman1402.dev.wikif1.util.model.season.Season;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,6 +36,8 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
     private BaseAdapter<Season, VHSeason> seasonAdapter;
     private MainP presenter;
     private String TAG = this.getClass().getSimpleName();
+    private Calendar calAwal;
+    private Calendar calAkhir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,7 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
 
     @Override
     public void getData(final Season season) {
+        calAwal = GregorianCalendar.getInstance();
         setSubscribe(presenter.getResult(season), new DisposableObserver<IMainM>() {
             @Override
             public void onError(Throwable error) {
@@ -89,6 +94,8 @@ public class MainActivity extends BaseActivity<IMainM> implements MainV {
 
             @Override
             public void onNext(final IMainM result) {
+                calAkhir = GregorianCalendar.getInstance();
+                Log.d(TAG, "onNext: " + (calAkhir.getTimeInMillis() - calAwal.getTimeInMillis())+" ms");
                 Log.d(TAG, "onNext: " + App.getInstance().getGson().toJson(result.getRaceList().getRaceTable().getRaces()));
                 openSeason(result.getRaceList().getRaceTable().getRaces(), season);
             }
