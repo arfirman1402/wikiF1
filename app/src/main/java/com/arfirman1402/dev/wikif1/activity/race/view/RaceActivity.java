@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.R;
@@ -80,8 +81,11 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
             @Override
             public void onNext(IRaceM result) {
                 raceResultDataList.clear();
-                raceResultDataList.addAll(result.getRaceList().getRaceTable().getRaces().get(0).getResults());
-
+                if (result.getRaceList().getRaceTable().getRaces().size() > 0) {
+                    raceResultDataList.addAll(result.getRaceList().getRaceTable().getRaces().get(0).getResults());
+                } else {
+                    Toast.makeText(RaceActivity.this, "No Results Data", Toast.LENGTH_SHORT).show();
+                }
                 raceResultAdapter.notifyDataSetChanged();
             }
         });
