@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.arfirman1402.dev.wikif1.App;
 import com.arfirman1402.dev.wikif1.R;
@@ -52,6 +52,9 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
     @BindView(R.id.race_location)
     TextView raceLocation;
 
+    @BindView(R.id.race_result_date)
+    TextView raceResultDate;
+
     private ArrayList<Result> raceResultDataList;
     private BaseAdapter<Result, VHResult> raceResultAdapter;
 
@@ -84,7 +87,9 @@ public class RaceActivity extends BaseActivity<IRaceM> implements RaceV {
                 if (result.getRaceList().getRaceTable().getRaces().size() > 0) {
                     raceResultDataList.addAll(result.getRaceList().getRaceTable().getRaces().get(0).getResults());
                 } else {
-                    Toast.makeText(RaceActivity.this, "No Results Data", Toast.LENGTH_SHORT).show();
+                    raceResultList.setVisibility(View.GONE);
+                    raceResultDate.setVisibility(View.VISIBLE);
+                    raceResultDate.setText("No Race results from server because race still unfinished or still unstarted. Please try again later.");
                 }
                 raceResultAdapter.notifyDataSetChanged();
             }

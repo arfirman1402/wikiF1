@@ -73,5 +73,18 @@
             android:id="@+id/race_result_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/race_result_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="Race start on September 24th, 2017"
+            android:textAllCaps="true"
+            android:textColor="@color/colorBlackLight"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
