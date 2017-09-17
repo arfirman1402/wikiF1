@@ -1,26 +1,35 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    signingConfigs {
+        release {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_KEY_STORE_FILE)
+            storePassword RELEASE_KEY_STORE_PASSWORD
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.arfirman1402.dev.wikif1"
         minSdkVersion 19
-        targetSdkVersion 25
-        versionCode 2
-        versionName "1.0.1"
+        targetSdkVersion 26
+        versionCode 3
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
 
 ext {
-    supportLibVersion = '25.3.1'
+    supportLibVersion = '26.0.2'
     jUnitVersion = '4.12'
     rxJavaVersion = '2.1.0'
     rxAndroidVersion = '2.0.1'
@@ -35,16 +44,16 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:${espressoVersion}", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile("com.android.support:appcompat-v7:${supportLibVersion}")
-    testCompile("junit:junit:${jUnitVersion}")
-    compile("io.reactivex.rxjava2:rxjava:${rxJavaVersion}")
-    compile("io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}")
-    compile("com.jakewharton:butterknife:${butterKnifeVersion}")
+    compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    testCompile "junit:junit:${jUnitVersion}"
+    compile "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+    compile "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
+    compile "com.jakewharton:butterknife:${butterKnifeVersion}"
     annotationProcessor("com.jakewharton:butterknife-compiler:${butterKnifeVersion}")
-    compile("com.google.code.gson:gson:${gsonVersion}")
-    compile("com.android.support:recyclerview-v7:${supportLibVersion}")
-    compile("com.android.support:cardview-v7:${supportLibVersion}")
-    compile("com.squareup.retrofit2:retrofit:${retrofitVersion}")
-    compile("com.squareup.retrofit2:converter-gson:${retrofitVersion}")
-    compile("com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}")
+    compile "com.google.code.gson:gson:${gsonVersion}"
+    compile "com.android.support:recyclerview-v7:${supportLibVersion}"
+    compile "com.android.support:cardview-v7:${supportLibVersion}"
+    compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
 }
